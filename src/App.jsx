@@ -1,5 +1,11 @@
+import Comments from "./components/Comments";
+
 function App() {
-  return <div>Hello world</div>;
+  return (
+    <main>
+      <Comments />
+    </main>
+  );
 }
 
 export default App;
