@@ -1,9 +1,13 @@
 import Comments from "./components/Comments";
+import Form from "./components/Form";
 
 function App() {
   return (
     <main>
-      <Comments />
+      <div className="container">
+        <Comments />
+        <Form />
+      </div>
     </main>
   );
 }

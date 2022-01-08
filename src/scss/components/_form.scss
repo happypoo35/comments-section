@@ -1,0 +1,65 @@
+.form {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1/1;
+    margin-top: 0.25rem;
+
+    @include mobile {
+      grid-row: 2;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 0.5rem;
+    border-color: $Light-gray;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.875rem 1.5rem;
+    min-height: 6rem;
+    outline: none;
+
+    @include mobile {
+      grid-column: 1/-1;
+    }
+
+    &:hover {
+      border-color: $Light-grayish-blue;
+    }
+
+    &:focus {
+      border-color: $Moderate-blue;
+    }
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  .btn {
+    @include mobile {
+      grid-row: 2;
+    }
+  }
+}

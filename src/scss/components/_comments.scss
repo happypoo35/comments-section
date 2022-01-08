@@ -1,0 +1,40 @@
+.comments {
+  margin-bottom: 1.25rem;
+}
+
+.replies {
+  margin-top: 1.125rem;
+}
+
+.comments,
+.replies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.replies {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+
+  @include tablet {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  @include mobile {
+    grid-template-columns: 1rem 1fr;
+  }
+
+  &::before {
+    content: "";
+    place-self: center;
+    display: flex;
+    width: 2px;
+    height: 100%;
+    background: $Light-gray;
+
+    @include tablet {
+      place-self: unset;
+    }
+  }
+}

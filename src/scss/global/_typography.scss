@@ -3,3 +3,13 @@
 body {
   font-family: "Rubik", sans-serif;
 }
+
+strong {
+  letter-spacing: -0.018em;
+}
+
+p,
+textarea {
+  color: $Grayish-blue;
+  line-height: 1.5em;
+}

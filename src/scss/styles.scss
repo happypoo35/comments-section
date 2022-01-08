@@ -1,3 +1,9 @@
 @import "global/vars";
+@import "global/mixins";
 @import "global/global";
 @import "global/typography";
+
+@import "components/buttons";
+@import "components/comments";
+@import "components/comment";
+@import "components/form";

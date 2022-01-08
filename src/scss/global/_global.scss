@@ -9,3 +9,35 @@
 html {
   background: $Very-light-gray;
 }
+
+main {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 100vh;
+
+  @include mobile {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.container {
+  max-width: 730px;
+  margin: 0 auto;
+  padding: 4rem 0;
+
+  @include mobile {
+    padding: 2rem 0;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.125rem 0.25rem rgba($Dark-blue, 0.02);
+  padding: 1.5rem;
+
+  @include mobile {
+    padding: 1rem;
+  }
+}
