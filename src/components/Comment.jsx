@@ -107,7 +107,11 @@ const Comment = ({ comment, commentId, replyId }) => {
         id={comment.id}
       >
         <div className="score">
-          <button className="btn-score" onClick={handleIncrement}>
+          <button
+            className="btn-score"
+            aria-label="like"
+            onClick={handleIncrement}
+          >
             <IconPlus />
           </button>
           <span
@@ -121,7 +125,11 @@ const Comment = ({ comment, commentId, replyId }) => {
           >
             {comment.score}
           </span>
-          <button className="btn-score" onClick={handleDecrement}>
+          <button
+            className="btn-score"
+            aria-label="dislike"
+            onClick={handleDecrement}
+          >
             <IconMinus />
           </button>
         </div>
