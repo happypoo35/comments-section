@@ -10,6 +10,9 @@ function App() {
 
   return (
     <main>
+      <h1 style={{ position: "absolute", visibility: "hidden" }}>
+        Comment Section
+      </h1>
       <div className="container">
         {isModal.value && <Modal />}
         <Comments />
