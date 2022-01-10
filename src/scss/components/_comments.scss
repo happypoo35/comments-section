@@ -2,18 +2,14 @@
   margin-bottom: 1.25rem;
 }
 
-.replies {
-  margin-top: 1.125rem;
-}
-
 .comments,
-.replies-container {
+.replies {
   display: flex;
   flex-direction: column;
   gap: 1.125rem;
 }
 
-.replies {
+.replies-container {
   display: grid;
   grid-template-columns: 5.5rem 1fr;
 

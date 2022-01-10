@@ -7,6 +7,11 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  &.add {
+    animation: 0.2s popin;
+    position: relative;
+  }
+
   &-user {
     display: flex;
     gap: 1rem;
@@ -61,6 +66,13 @@
   &-content {
     grid-column: 2/-1;
 
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
     @include mobile {
       grid-area: 2/1/3/-1;
     }
@@ -92,5 +104,13 @@
   &-num {
     font-weight: 500;
     color: $Moderate-blue;
+
+    &.zero {
+      color: $Light-grayish-blue;
+    }
+
+    &.negative {
+      color: $Soft-red;
+    }
   }
 }

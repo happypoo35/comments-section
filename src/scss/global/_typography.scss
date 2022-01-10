@@ -13,3 +13,13 @@ textarea {
   color: $Grayish-blue;
   line-height: 1.5em;
 }
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $Dark-blue;
+
+  @include mobile {
+    font-size: 1.25rem;
+  }
+}

@@ -48,12 +48,29 @@ button {
 .btn {
   font-weight: 500;
   text-transform: uppercase;
-  padding: 0.875rem 1.875rem;
+  padding: 0.875rem 0;
+  min-width: 6.5rem;
   border-radius: 0.5rem;
   color: white;
   background: $Moderate-blue;
 
   &:hover {
     background: $Light-grayish-blue;
+  }
+
+  &-gray {
+    background: $Grayish-blue;
+
+    &:hover {
+      background: mix($Grayish-blue, white, 90%);
+    }
+  }
+
+  &-red {
+    background: $Soft-red;
+
+    &:hover {
+      background: mix($Soft-red, white, 90%);
+    }
   }
 }
