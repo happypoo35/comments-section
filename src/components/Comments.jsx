@@ -11,7 +11,7 @@ const Comments = () => {
 
   useEffect(() => {
     dispatch(sort());
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className="comments" aria-label="Comments section">
