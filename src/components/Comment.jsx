@@ -22,7 +22,6 @@ const Comment = ({ comment, commentId, replyId }) => {
     ? `@${comment.replyingTo} ${comment.content}`
     : comment.content;
   const [text, setText] = useState(initialValue);
-  const isImgLoaded = useBool();
   const isReplying = useBool();
   const isEditing = useBool();
   const commentRef = useRef(null);
@@ -134,8 +133,7 @@ const Comment = ({ comment, commentId, replyId }) => {
           </button>
         </div>
         <div className="comment-user">
-          <picture onLoad={() => isImgLoaded.on()}>
-            {!isImgLoaded.value && <div className="img-skeleton"></div>}
+          <picture>
             <source type="image/webp" srcSet={comment.user.image.webp} />
             <img src={comment.user.image.png} alt={comment.user.username} />
           </picture>

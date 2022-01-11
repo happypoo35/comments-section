@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useBool from "hooks/useBool";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addComment,
@@ -12,7 +11,6 @@ const Form = ({ isReplying, replyingTo, commentId }) => {
   const initialValue = replyingTo ? `@${replyingTo} ` : "";
   const [text, setText] = useState(initialValue);
   const [error, setError] = useState("");
-  const isImgLoaded = useBool();
 
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -77,8 +75,7 @@ const Form = ({ isReplying, replyingTo, commentId }) => {
       className={`card form ${isReplying ? "form-reply" : ""}`}
       onSubmit={handleSubmit}
     >
-      <picture onLoad={() => isImgLoaded.on()}>
-        {!isImgLoaded.value && <div className="img-skeleton"></div>}
+      <picture>
         <source type="image/webp" srcSet={user?.image.webp} />
         <img src={user?.image.png} alt={user?.username} />
       </picture>
