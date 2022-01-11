@@ -34,7 +34,7 @@ export const commentsSlice = createSlice({
       }
     },
     updateComment: (state, action) => {
-      const { commentId, replyId, text } = action.payload;
+      const { commentId, replyId, text, replyingTo } = action.payload;
       const currentComment = state.comments[commentId];
 
       if (currentComment) {
@@ -42,6 +42,7 @@ export const commentsSlice = createSlice({
           currentComment.content = text;
         } else {
           currentComment.replies[replyId].content = text;
+          currentComment.replies[replyId].replyingTo = replyingTo;
         }
       }
     },
@@ -68,6 +69,9 @@ export const commentsSlice = createSlice({
           currentComment.replies[replyId].score -= 1;
         }
       }
+    },
+    sort: (state) => {
+      state.comments.sort((a, b) => b.score - a.score);
     },
   },
   extraReducers: (builder) => {
@@ -107,6 +111,7 @@ export const {
   updateComment,
   increment,
   decrement,
+  sort,
 } = commentsSlice.actions;
 
 export default commentsSlice.reducer;

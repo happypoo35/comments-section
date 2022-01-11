@@ -1,12 +1,17 @@
-import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetDataQuery } from "app/api";
-import { selectComments } from "features/commentsSlice";
+import { selectComments, sort } from "features/commentsSlice";
 import Comment from "./Comment";
 
 const Comments = () => {
   useGetDataQuery();
+  const dispatch = useDispatch();
   const comments = useSelector(selectComments);
+
+  useEffect(() => {
+    dispatch(sort());
+  }, []);
 
   return (
     <section className="comments" aria-label="Comments section">

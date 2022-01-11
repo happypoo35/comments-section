@@ -22,6 +22,7 @@ const Comment = ({ comment, commentId, replyId }) => {
     ? `@${comment.replyingTo} ${comment.content}`
     : comment.content;
   const [text, setText] = useState(initialValue);
+  const [error, setError] = useState("");
   const isReplying = useBool();
   const isEditing = useBool();
   const commentRef = useRef(null);
@@ -29,7 +30,12 @@ const Comment = ({ comment, commentId, replyId }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
+  const extractedUser = text.match(/^@\w+/g)
+    ? text.match(/^@\w+/g).join().replace("@", "")
+    : null;
+
   const handleChange = (e) => {
+    setError("");
     setText(e.target.value);
     e.target.style.height = "1px";
     e.target.style.height = e.target.scrollHeight + "px";
@@ -49,8 +55,22 @@ const Comment = ({ comment, commentId, replyId }) => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
+    if (text.replace(/^@\w+/, "").trim() === "") {
+      setError("Can not be empty");
+      setText("");
+      setTimeout(() => {
+        setError("");
+        setText(initialValue);
+      }, 2000);
+      return;
+    }
     dispatch(
-      updateComment({ commentId, replyId, text: text.replace(/^@\w+/, "") })
+      updateComment({
+        commentId,
+        replyId,
+        text: text.replace(/^@\w+/, ""),
+        replyingTo: extractedUser,
+      })
     );
     isEditing.off();
   };
@@ -165,8 +185,10 @@ const Comment = ({ comment, commentId, replyId }) => {
           {isEditing.value ? (
             <form onSubmit={handleUpdate}>
               <textarea
+                className={error ? "error" : ""}
                 onChange={handleChange}
                 onFocus={handleChange}
+                placeholder={error ? "Can not be empty" : "Add a comment"}
                 value={text}
                 autoFocus
               ></textarea>

@@ -10,6 +10,7 @@ function App() {
 
   return (
     <main>
+      <h1>Comment Section</h1>
       <div className="container">
         {isModal.value && <Modal />}
         <Comments />

@@ -16,6 +16,10 @@ const Form = ({ isReplying, replyingTo, commentId }) => {
   const user = useSelector(selectUser);
   const lastId = useSelector(selectLastId);
 
+  const extractedUser = text.match(/^@\w+/g)
+    ? text.match(/^@\w+/g).join().replace("@", "")
+    : null;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.replace(/^@\w+/, "").trim() === "") {
@@ -48,7 +52,7 @@ const Form = ({ isReplying, replyingTo, commentId }) => {
             createdAt: Date.now(),
             score: 0,
             user: user,
-            replyingTo,
+            replyingTo: extractedUser,
           },
         })
       );
